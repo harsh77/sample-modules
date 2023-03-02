@@ -1,0 +1,5 @@
+name: 'Azure - API Sync'
+type: module
+description: 'Custom module to sync the APIs from multiple instance of Azure.'
+core_version_requirement: ^8.8 || ^9
+package: 'Sync'

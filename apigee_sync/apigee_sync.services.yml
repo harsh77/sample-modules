@@ -1,0 +1,11 @@
+services:
+  apigee_sync.apigee_connector:
+    class: Drupal\apigee_sync\Services\ApigeeConnector
+    arguments:
+      - '@config.factory'
+      - '@logger.factory'
+      - '@messenger'
+      - '@entity_type.manager'
+      - '@current_user'
+      - '@http_client'
+      - '@cache.default'

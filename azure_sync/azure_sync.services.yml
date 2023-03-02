@@ -1,0 +1,11 @@
+services:
+  azure_sync.azure_connector:
+    class: Drupal\azure_sync\Services\AzureConnector
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@logger.factory'
+      - '@messenger'
+      - '@http_client'
+      - '@datetime.time'
+      - '@tempstore.private'

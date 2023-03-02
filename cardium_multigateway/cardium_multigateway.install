@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for cardium multigateway.
+ */
+
+use Symfony\Component\Yaml\Yaml;
+use Drupal\views\Entity\View;
+
+/**
+ * Creates the app list view.
+ */
+function cardium_multigateway_update_9002() {
+  $message = NULL;
+
+  if (\Drupal::moduleHandler()->moduleExists('views') && !View::load('app_list')) {
+    $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'cardium_multigateway') . '/config/install/views.view.app_list.yml';
+    $data = Yaml::parseFile($config_path);
+    \Drupal::configFactory()->getEditable('views.view.app_list')->setData($data)->save(TRUE);
+    $message = 'The new app list view has been created.';
+  }
+  else {
+    $message = 'Not creating a app list view since it already exists.';
+  }
+  return $message;
+}

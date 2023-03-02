@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - cardium_apiproducts.api_products_type.api_products
+    - field.storage.node.field_app_apis
+    - node.type.apps
+id: node.apps.field_app_apis
+field_name: field_app_apis
+entity_type: node
+bundle: apps
+label: APIs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:api_products'
+  handler_settings:
+    target_bundles:
+      api_products: api_products
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

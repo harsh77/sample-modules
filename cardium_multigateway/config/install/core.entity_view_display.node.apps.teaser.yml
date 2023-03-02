@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.apps.field_app_api_keys
+    - field.field.node.apps.field_app_apis
+    - field.field.node.apps.field_app_callback_url
+    - field.field.node.apps.field_app_company_name
+    - field.field.node.apps.field_app_short_description
+    - field.field.node.apps.field_business_email
+    - field.field.node.apps.field_terms_and_conditions
+    - node.type.apps
+  module:
+    - user
+id: node.apps.teaser
+targetEntityType: node
+bundle: apps
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_app_api_keys: true
+  field_app_apis: true
+  field_app_callback_url: true
+  field_app_company_name: true
+  field_app_short_description: true
+  field_business_email: true
+  field_terms_and_conditions: true

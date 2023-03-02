@@ -1,0 +1,9 @@
+{
+  "name": "dac-components/apigee_sync",
+  "description": "Custom module to sync the APIs from multiple Apigee instances.",
+  "type": "drupal-custom-module",
+  "require": {
+    "apigee/apigee-client-php": "^2.0",
+    "php-http/guzzle6-adapter": "^2.0"
+  }
+}

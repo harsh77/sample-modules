@@ -1,0 +1,4 @@
+administer apigee api sync:
+  title: 'Administer Apigee api sync'
+  description: 'Permission to perform Apigee API sync.'
+  restrict access: true

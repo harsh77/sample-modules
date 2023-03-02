@@ -1,0 +1,4 @@
+administer azure api sync:
+  title: 'Administer Azure api sync'
+  description: 'Permission to perform API sync.'
+  restrict access: true

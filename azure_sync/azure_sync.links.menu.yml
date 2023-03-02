@@ -1,0 +1,26 @@
+azure_sync:
+  route_name: azure_sync.basic
+  title: 'Azure'
+  description: 'Azure connectivity.'
+  parent: cardium_sync
+
+azure_sync.settings:
+  route_name: azure_sync.settings
+  title: 'Azure Credentials'
+  description: 'Azure API gateway module settings.'
+  parent: azure_sync
+  weight: 1
+
+azure_sync.settings.azure_api_sync:
+  route_name: azure_sync.settings.azure_api_sync
+  title: 'Sync Azure APIs'
+  description: 'Syncing the APIs from the Azure gateway.'
+  parent: azure_sync
+  weight: 2
+
+azure_sync.settings.azure_api_products_sync:
+  route_name: azure_sync.settings.azure_api_products_sync
+  title: 'Sync Azure API Products'
+  description: 'Sync the API Products from the Azure gateway.'
+  parent: azure_sync
+  weight: 3

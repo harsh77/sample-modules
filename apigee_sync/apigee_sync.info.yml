@@ -1,0 +1,5 @@
+name: 'Apigee - API Sync'
+type: module
+description: 'Custom module to sync the APIs from multiple instances of Apigee.'
+core_version_requirement: ^8.8 || ^9
+package: 'Sync'

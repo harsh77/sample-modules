@@ -1,0 +1,22 @@
+azure_sync.basic:
+  route_name: azure_sync.basic
+  title: 'Azure Connectivity' 
+  base_route: azure_sync.basic
+
+azure_sync.settings:
+  route_name: azure_sync.settings
+  title: 'Azure Credentials'
+  base_route: azure_sync.basic
+  weight: 1
+
+azure_sync.settings.azure_api_sync:
+  route_name: azure_sync.settings.azure_api_sync
+  title: 'Sync Azure APIs'
+  base_route: azure_sync.basic
+  weight: 2
+
+azure_sync.settings.azure_api_products_sync:
+  route_name: azure_sync.settings.azure_api_products_sync
+  title: 'Sync Azure API Products'
+  base_route: azure_sync.basic
+  weight: 2

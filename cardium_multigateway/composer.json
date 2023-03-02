@@ -1,0 +1,5 @@
+{
+  "name": "dac-components/cardium_multigateway",
+  "description": "Allows the user to create developer app across gateways.",
+  "type": "drupal-custom-module"
+}

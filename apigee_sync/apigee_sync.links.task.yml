@@ -1,0 +1,22 @@
+apigee_sync.basic:
+  route_name: apigee_sync.basic
+  title: 'Apigee Connectivity'
+  base_route: apigee_sync.basic
+
+apigee_sync.settings:
+  route_name: apigee_sync.settings
+  title: 'Apigee Credentials'
+  base_route: apigee_sync.basic
+  weight: 1
+
+apigee_sync.settings.apigee_api_sync:
+  route_name: apigee_sync.settings.apigee_api_sync
+  title: 'Sync Apigee APIs'
+  base_route: apigee_sync.basic
+  weight: 2
+
+apigee_sync.settings.apigee_api_products_sync:
+  route_name: apigee_sync.settings.apigee_api_products_sync
+  title: 'Sync Apigee API Products'
+  base_route: apigee_sync.basic
+  weight: 3

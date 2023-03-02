@@ -1,0 +1,125 @@
+<?php
+
+/**
+ * @file
+ * Contains cardium_multigateway.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function cardium_multigateway_theme($existing, $type, $theme, $path) {
+  $items['node__app_detail'] = [
+    'render element' => 'content',
+    'base hook' => 'container',
+  ];
+  return $items;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function cardium_multigateway_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  $node = $variables['elements']['#node'];
+
+  if ($node->bundle() == 'apps') {
+    $suggestions[] = 'node__app_detail';
+  }
+}
+
+/**
+ * Implements hook_theme_preprocess_node().
+ */
+function cardium_multigateway_preprocess_node(&$variables) {
+  // Add global modification that works for all node type.
+  $function = __FUNCTION__ . '__' . $variables['node']->getType();
+  // Each node type can have its own specific function.
+  if (function_exists($function)) {
+    $function($variables);
+  }
+}
+
+/**
+ * Implements specific content type hook_theme_preprocess_node().
+ */
+function cardium_multigateway_preprocess_node__apps(&$variables) {
+  $node = $variables['elements']['#node'];
+  $app_details = $client_id = $client_sec = [];
+  $client_detail = json_decode($node->get('field_app_api_keys')->getValue()[0]['value'], TRUE);
+  $variables['img_path'] = file_create_url(\Drupal::service('extension.path.resolver')->getPath('module', 'cardium_multigateway') . '/images');
+
+  // Getting api values.
+  foreach ($node->get('field_app_apis')->getValue() as $val) {
+    $api_type = \Drupal::entityTypeManager()->getStorage('api_products')->load($val['target_id']);
+
+    $product_name = $api_type->get('title')->getValue()[0]['value'] ?? '';
+    $product_scheme = $api_type->get('field_sync_product_id')->getValue()[0]['value'] ?? '';
+    $product_gateway = $api_type->get('field_sync_gateway')->getValue()[0]['value'] ?? '';
+
+    $product_details = $api_type->get('field_apis')->getValue() ?? '';
+
+    foreach ($product_details as $values) {
+      $node_type = \Drupal::entityTypeManager()->getStorage('node')->load($values['target_id']);
+
+      $app_details[] = [
+        'title' => $node_type->getTitle() . " (" . $product_name . ")",
+        'gateway' => $node_type->get('field_sync_gateway')->getValue()[0]['value'] ?? NULL,
+        'client_id' => $client_detail[$product_gateway][0][$product_scheme]['client_id'] ?? NULL,
+        'client_sec' => $client_detail[$product_gateway][0][$product_scheme]['client_secret'] ?? NULL,
+        'title_link' => \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node_type->id()),
+      ];
+    }
+  }
+  $variables['data'] = $app_details;
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function cardium_multigateway_preprocess_views_view__app_list(&$variables) {
+  $variables['#attached']['library'][] = 'cardium_multigateway/my-apps';
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function cardium_multigateway_form_alter(&$form, &$form_state, $form_id) {
+  // There will already be some validate handlers added so you need to
+  // create validate method.
+  if ($form_id == 'node_apps_form') {
+    $form['#validate'][] = 'cardium_multigateway_node_apps_form_validate';
+    // Hide last saved and author from edit form.
+    $current_user = \Drupal::currentUser();
+    $roles = $current_user->getRoles();
+    if (in_array('administrator', $roles) || in_array('portal_administrator', $roles)) {
+      $form['advanced'] = [
+        '#access' => TRUE,
+      ];
+    }
+    else {
+      $form['advanced'] = [
+        '#access' => FALSE,
+      ];
+    }
+  }
+}
+
+/**
+ * Custom validation for business email.
+ */
+function cardium_multigateway_node_apps_form_validate($form, &$form_state) {
+  // If the email is not valid then trows an error.
+  $form_errors = $form_state->getErrors();
+  $label = [];
+  if (!empty($form['field_business_email']['widget'][0]['#title'])) {
+    $label['%value'] = $form['field_business_email']['widget'][0]['#title'];
+    if ($form_errors) {
+      foreach ($form_errors as $error_key => $error_val) {
+        if (strpos($error_key, 'field_business_email][0') !== FALSE) {
+          // Re-construct the error.
+          $error_val->__construct("%value is not a valid email address.", $label);
+        }
+      }
+    }
+  }
+}

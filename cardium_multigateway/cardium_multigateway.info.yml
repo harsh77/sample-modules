@@ -1,0 +1,8 @@
+name: 'Cardium Multigateway'
+type: module
+description: 'Allows the user to create developer/company app across gateways.'
+core_version_requirement: ^8.8 || ^9
+package: 'Cardium'
+dependencies:
+  - drupal:entity_browser
+  - drupal:hook_event_dispatcher

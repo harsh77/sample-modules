@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Contains apigee_sync.module.
+ */
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function apigee_sync_menu_links_discovered_alter(&$links) {
+  if (isset($links['apigee_sync']) && !empty($links['apigee_sync'])) {
+    $apis = $api_products = [];
+    $api_count = $api_product_count = 0;
+    $apigee_connector = \Drupal::service('apigee_sync.apigee_connector');
+
+    if ($apigee_connector->getAllApis()) {
+      $apis = $apigee_connector->getAllApis();
+      $api_count = is_array($apis) ? count($apis) : 0;
+    }
+    if ($apigee_connector->getProductBundles()) {
+      $api_products = $apigee_connector->getProductBundles();
+      $api_product_count = is_array($api_products) ? count($api_products) : 0;
+    }
+    $links['apigee_sync']['description'] = t('Number of APIs: @api_count <br> Number of API Products: @api_product_count',
+    ['@api_count' => $api_count, '@api_product_count' => $api_product_count]);
+  }
+}

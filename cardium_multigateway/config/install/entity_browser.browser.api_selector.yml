@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.api_selector
+  module:
+    - views
+name: api_selector
+label: 'Api Selector'
+display: modal
+display_configuration:
+  width: '650'
+  height: '500'
+  link_text: 'Select APIs'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  646ba7ef-98d9-468a-84c7-90da23a8e058:
+    id: view
+    uuid: 646ba7ef-98d9-468a-84c7-90da23a8e058
+    label: APIs
+    weight: 2
+    settings:
+      submit_text: 'Select APIs'
+      auto_select: false
+      view: api_selector
+      view_display: entity_browser_1

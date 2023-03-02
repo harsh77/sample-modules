@@ -1,0 +1,31 @@
+azure_sync.basic:
+  path: '/admin/config/api-product-sync/azure'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Azure Connectivity'
+  requirements:
+    _permission: 'administer azure api sync'
+
+azure_sync.settings:
+  path: '/admin/config/api-product-sync/azure/settings'
+  defaults:
+    _form: '\Drupal\azure_sync\Form\AuthenticationForm'
+    _title: 'Azure Credentials'
+  requirements:
+    _permission: 'administer azure api sync'
+
+azure_sync.settings.azure_api_sync:
+  path: '/admin/config/api-product-sync/azure/sync-apis'
+  defaults:
+    _form: '\Drupal\azure_sync\Form\AzureApiSyncForm'
+    _title: 'Sync APIs'
+  requirements:
+    _permission: 'administer azure api sync'
+
+azure_sync.settings.azure_api_products_sync:
+  path: '/admin/config/api-product-sync/azure/sync-products'
+  defaults:
+    _form: '\Drupal\azure_sync\Form\AzureApiProductsSyncForm'
+    _title: 'Sync Azure API Products'
+  requirements:
+    _permission: 'administer azure api sync'

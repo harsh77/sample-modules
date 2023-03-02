@@ -1,0 +1,5 @@
+{
+  "name": "dac-components/azure_sync",
+  "description": "Adds a custom module to sync the APIs from different azure instances.",
+  "type": "drupal-custom-module"
+}

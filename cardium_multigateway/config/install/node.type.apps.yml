@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: App
+type: apps
+description: 'Allows the developers to create their own apps and access those by using the access keys.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

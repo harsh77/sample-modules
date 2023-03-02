@@ -1,0 +1,76 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.apps.field_app_api_keys
+    - field.field.node.apps.field_app_apis
+    - field.field.node.apps.field_app_callback_url
+    - field.field.node.apps.field_app_company_name
+    - field.field.node.apps.field_app_short_description
+    - field.field.node.apps.field_business_email
+    - field.field.node.apps.field_terms_and_conditions
+    - node.type.apps
+  module:
+    - user
+_core:
+  default_config_hash: N8T9IvKJ1pYvBky3Y5eU8D_5uweCAdO7XFEHLH08OjQ
+id: node.apps.default
+targetEntityType: node
+bundle: apps
+mode: default
+content:
+  field_app_apis:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_app_callback_url:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_app_company_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_app_short_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_business_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_terms_and_conditions:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_app_api_keys: true

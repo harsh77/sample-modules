@@ -1,0 +1,37 @@
+:root {
+  /* Common Colors */
+  --darkgrey: #2a3136;
+  --darkgrey2: #707070;
+  --red: #e3463a;
+  --lightgrey: #ebebeb;
+  --grey100: #b2b2b2;
+  --grey200: #bababa;
+  --grey400: #838383;
+  --black400: #2b2b2b;
+  --white: #fff;
+  --bluetext: #3287fc;
+  --icongreen: #22c55e;
+  --borderdark: var(--darkgrey);
+  --borderdarkgrey: var(--darkgrey2);
+  --primary: var(--darkgrey);
+  --linkcolor: var(--darkgrey);
+  --activecolor: var(--red);
+  --navlinkactive: var(--red);
+  --hovercolor: var(--red);
+  --buttoncolor: var(--red);
+  --buttonhovercolor: var(--darkgrey);
+  --bordercolor: var(--lightgrey);
+  --bordercolorlight: var(--grey200);
+  --tableheadcolor: var(--darkgrey);
+  --paginationbgcolor: var(--darkgrey);
+  --placeholdercolor: var(--grey400);
+  --backgroundwhite: var(--white);
+  --tabfontcolor: var(--black400);
+  --linktext: var(--bluetext);
+  --icongreenbg: var(--icongreen);
+  /* Font properties */
+  --weight-small: 200;
+  --weight-regular: 400;
+  --weight-medium: 600;
+  --weight-bold: 700;
+}

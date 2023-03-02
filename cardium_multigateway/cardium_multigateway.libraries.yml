@@ -1,0 +1,7 @@
+my-apps:
+  js:
+    js/cardium_multigateway.js: {} 
+  css:
+    component:
+      css/root.css: { }
+      css/my-apps.css: { }

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_terms_and_conditions
+    - node.type.apps
+id: node.apps.field_terms_and_conditions
+field_name: field_terms_and_conditions
+entity_type: node
+bundle: apps
+label: 'Agree to API terms and conditions'
+description: '<a href="#" class="use-ajax" data-dialog-type="modal" data-dialog-options="{"width":"auto"}" data-once="ajax">Click here</a> to read the Terms and Conditions'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

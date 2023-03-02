@@ -1,0 +1,67 @@
+services:
+  create_app_events_subscriber:
+    class: '\Drupal\cardium_multigateway\EventSubscriber\CreateAppEventsSubscriber'
+    arguments:
+      - '@entity_type.manager'
+      - '@current_user'
+      - '@tempstore.private'
+      - '@multigateway.azure_connector'
+      - '@multigateway.apigee_connector'
+      - '@multigateway.aws_connector'
+      - '@multigateway.kong_connector'
+      - '@multigateway.mulesoft_connector'
+    tags:
+      - { name: 'event_subscriber' }
+
+  multigateway.azure_connector:
+    class: Drupal\cardium_multigateway\Services\AzureConnector
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@current_user'
+      - '@messenger'
+      - '@logger.factory'
+      - '@http_client'
+      - '@datetime.time'
+      - '@tempstore.private'
+
+  multigateway.apigee_connector:
+    class: Drupal\cardium_multigateway\Services\ApigeeConnector
+    arguments:
+      - '@config.factory'
+      - '@entity_type.manager'
+      - '@current_user'
+      - '@messenger'
+      - '@logger.factory'
+      - '@datetime.time'
+      - '@http_client'
+
+  multigateway.aws_connector:
+    class: Drupal\cardium_multigateway\Services\AwsConnector
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@current_user'
+      - '@messenger'
+      - '@logger.factory'
+      - '@datetime.time'
+
+  multigateway.kong_connector:
+    class: Drupal\cardium_multigateway\Services\KongConnector
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@messenger'
+      - '@logger.factory'
+      - '@http_client'
+      - '@datetime.time'
+
+  multigateway.mulesoft_connector:
+    class: Drupal\cardium_multigateway\Services\MulesoftConnector
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@messenger'
+      - '@logger.factory'
+      - '@http_client'
+      - '@datetime.time'

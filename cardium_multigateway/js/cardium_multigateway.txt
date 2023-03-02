@@ -1,0 +1,13 @@
+(function ($, Drupal, drupalSettings) {
+  "use strict";
+  Drupal.behaviors.cardium_multigateway = {
+    attach: function (context, settings) {
+      if (context !== document) {
+        return;
+      }
+      $(".key-icon .eye-icon").click(function () {
+        $(this).parent().toggleClass('active');
+      });
+    },
+  };
+})(jQuery, Drupal, drupalSettings);
